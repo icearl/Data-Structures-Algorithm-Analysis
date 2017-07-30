@@ -13,7 +13,7 @@ namespace CS_sort {
         }
         public void SortOriginal(int[] arr) {
             
-            for (int i = 0; i < arr.Length - 1; i++) {
+            for (int i = 0; i <= arr.Length - 2; i++) {
                 // 两两交换
                 for (int j = arr.Length - 1; j > i; j--) {
                     // 后面的是否更小
@@ -29,7 +29,7 @@ namespace CS_sort {
         //已经排好就不继续遍历了
         public void SortOptimized(int[] arr) {
             int len = arr.Length;
-            for (int i = 0; i < len - 1; i++) {
+            for (int i = 0; i <= len - 2; i++) {
                 bool changed = false;
                 for (int j = len - 1; j > i; j--) {
                     if (arr[j] < arr[j - 1]) {
