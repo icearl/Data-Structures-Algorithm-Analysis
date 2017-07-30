@@ -12,7 +12,7 @@ namespace CS_sort {
             arr[j] = temp;
         }
         public void Sort(int[] arr) {
-            for(int i = 0; i < arr.Length - 1; i++) {
+            for(int i = 0; i <= arr.Length - 2; i++) {
                 // 选出第 i 小的元素的下标
                 int minIndex = i;
                 for(int j = i + 1; j <= arr.Length - 1; j++) {
