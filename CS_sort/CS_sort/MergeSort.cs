@@ -13,8 +13,10 @@ namespace CS_sort {
         void MSort(int[] arr, int left, int right) {
             if(left < right) {
                 int mid = (left + right) / 2;
+
                 MSort(arr, left, mid);
                 MSort(arr, mid + 1, right);
+
                 Merge(arr, left, mid, right);
             }
         }

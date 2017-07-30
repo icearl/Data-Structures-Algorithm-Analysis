@@ -16,18 +16,18 @@ namespace CS_sort {
                 for (i = 0; i <= gap - 1; i++) {
                     // 对每组进行插入排序
                     for (j = i + gap; j <= len - 1; j += gap) {
-                        // 如果a[j] < a[j-gap]，则寻找a[j]位置，并将后面数据的位置都后移。
-                        if (a[j] < a[j - gap]) {
-                            int temp = a[j];
-                            int k = j - gap;
-                            while (k >= 0) {
-                                if(a[k] > temp) {
-                                    a[k + gap] = a[k];
-                                    k -= gap;
-                                }
+                        // 把大于temp的数据的位置都后移一位
+                        int temp = a[j];
+                        int k = j - gap;
+                        while (k >= 0) {
+                            if(a[k] > temp) {
+                                a[k + gap] = a[k];
+                                k -= gap;
+                            } else {
+                                break;
                             }
-                            a[k + gap] = temp;
                         }
+                        a[k + gap] = temp;
                     }
                 }
 

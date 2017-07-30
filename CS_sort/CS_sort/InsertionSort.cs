@@ -17,10 +17,10 @@ namespace CS_sort {
                 while(j >= 0) {
                     if(arr[j] > insertedItem) {
                         arr[j + 1] = arr[j];
+                        j--;
                     } else {
                         break;
                     }
-                    j--;
                 }
                 arr[j + 1] = insertedItem;
             }
