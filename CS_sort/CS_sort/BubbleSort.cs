@@ -28,9 +28,10 @@ namespace CS_sort {
         }
         //已经排好就不继续遍历了
         public void SortOptimized(int[] arr) {
-            for (int i = 0; i < arr.Length - 1; i++) {
+            int len = arr.Length;
+            for (int i = 0; i < len - 1; i++) {
                 bool changed = false;
-                for (int j = arr.Length - 1; j > i; j--) {
+                for (int j = len - 1; j > i; j--) {
                     if (arr[j] < arr[j - 1]) {
                         Swap(arr, j, j - 1);                     
                         changed = true;
