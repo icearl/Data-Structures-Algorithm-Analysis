@@ -7,22 +7,22 @@ using System.Threading.Tasks;
 namespace CS_sort {
     class BucketSort {
         public int[] Sort(int[] arr) {
-            int max = arr.Max();
-            int elementsNumber = arr.Length;
+            int arrMax = arr.Max();
+            int arrLen = arr.Length;
 
             // 初始化桶  
-            LinkedList<int>[] bucket = new LinkedList<int>[arr.Length];
-            for (int i = 0; i < elementsNumber; i++) {
+            LinkedList<int>[] bucket = new LinkedList<int>[arrLen];
+            for (int i = 0; i < arrLen; i++) {
                 bucket[i] = new LinkedList<int>();
             }
             // 元素分装各个桶中  
-            for (int i = 0; i < elementsNumber; i++) {
-                int bucketIndex = arr[i] * elementsNumber / (max + 1);
+            for (int i = 0; i < arrLen; i++) {
+                int bucketIndex = arr[i] * arrLen / (arrMax + 1);
                 InsertIntoLinkList(bucket[bucketIndex], arr[i]);
             }
-            // 从各个桶中获取后排序插入  
+            // 从各个桶中获取各元素按个插入  
             int index = 0;
-            for (int i = 0; i < elementsNumber; i++) {
+            for (int i = 0; i <= arrLen - 1; i++) {
                 foreach (var item in bucket[i]) {
                     arr[index++] = item;
                 }
