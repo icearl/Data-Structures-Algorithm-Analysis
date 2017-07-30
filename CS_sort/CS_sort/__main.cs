@@ -12,7 +12,7 @@ namespace CS_sort {
         }
         static void voidSort() {
             int[] array = new int[] { 11, 333, 123, 2, 55, 43, 9999, 5 };
-            var S = new QuickSort();
+            var S = new InsertionSort();
             S.Sort(array);
             foreach (int item in array) {
                 Console.Write("{0} ", item);

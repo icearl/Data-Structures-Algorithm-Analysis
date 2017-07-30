@@ -14,14 +14,14 @@ namespace CS_sort {
                 int insertedItem = arr[i];
                 // 把比 insertItem 大的后移一位，最后 j 停留在空位前一格
                 int j = i -1; 
-                for(; j >= 0; j--) {
+                while(j >= 0) {
                     if(arr[j] > insertedItem) {
                         arr[j + 1] = arr[j];
                     } else {
                         break;
                     }
+                    j--;
                 }
-
                 arr[j + 1] = insertedItem;
             }
         }
