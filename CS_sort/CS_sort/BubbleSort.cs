@@ -26,20 +26,18 @@ namespace CS_sort {
                 }
             }
         }
-
+        //已经排好就不继续遍历了
         public void SortOptimized(int[] arr) {
-            bool change = true;
-            for (int i = 0; i < arr.Length - 1 && change; i++) {
-                change = false;
+            for (int i = 0; i < arr.Length - 1; i++) {
+                bool changed = false;
                 for (int j = arr.Length - 1; j > i; j--) {
                     if (arr[j] < arr[j - 1]) {
-                        Swap(arr, j, j - 1);
-                        //int temp = arr[j];
-                        //arr[j] = arr[j - 1];
-                        //arr[j - 1] = temp;
-
-                        change = true;
+                        Swap(arr, j, j - 1);                     
+                        changed = true;
                     }
+                }
+                if (!changed) {
+                    break;
                 }
             }
         }

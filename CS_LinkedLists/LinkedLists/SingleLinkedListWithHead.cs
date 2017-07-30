@@ -63,8 +63,10 @@ namespace LinkedLists {
             if (IsEmpty()) {
                 Console.WriteLine("Empty Linked List");
             } else {
-                for (Node<Item> x = nil.next; x != null; x = x.next) {
+                Node<Item> x = nil.next;
+                while(x != null) {
                     Console.WriteLine(x.item);
+                    x = x.next;
                 }
             }
         }
@@ -151,6 +153,10 @@ namespace LinkedLists {
 
         // 删除第一个值为 data 的节点 O(n) （不太对，需要讨论头结点和尾结点）
         //public void Remove(Item data) {
+        //    if (node.next != null) {
+        //        node.val = node.next.val;
+        //        node.next = node.next.next;
+        //    }
         //    Node<Item> tempNode = Search(data);
         //    tempNode
         //}
