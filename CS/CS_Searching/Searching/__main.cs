@@ -8,7 +8,7 @@ namespace Searching {
     class __main {
         static void Main(string[] args) {
             int[] arr = new int[] { 1, 3, 4, 5, 10, 13 };
-            int index = BinarySearch.Search2(arr, 3);
+            int index = BinarySearch.Search1(arr, 0, 5, 3);
             Console.WriteLine(index);
         }
     }

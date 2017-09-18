@@ -29,7 +29,7 @@ namespace LinkedLists {
                 next = null;
             }
         }
-        public bool IsEmpty() {
+        public bool Empty() {
             return nil.next == null;
         } // Or: N == 0.
 
@@ -39,7 +39,7 @@ namespace LinkedLists {
         public void enqueue(Item another) { // Add item to the end of the list.
             Node newNode = new Node(another);
 
-            if (IsEmpty()) {
+            if (Empty()) {
                 nil.next = newNode;
             }
 
@@ -49,7 +49,7 @@ namespace LinkedLists {
             N++;
         }
         public Item dequeue() { // Remove item from the beginning of the list.k
-            if (IsEmpty()) {
+            if (Empty()) {
                 Console.WriteLine("Empty Linked List");
                 return default(Item);
             }
@@ -58,7 +58,7 @@ namespace LinkedLists {
 
             nil.next = nil.next.next;
 
-            if (IsEmpty()) {
+            if (Empty()) {
                 tail = nil;
             }
 

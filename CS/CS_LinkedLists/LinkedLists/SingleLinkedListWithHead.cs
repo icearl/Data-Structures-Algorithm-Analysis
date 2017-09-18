@@ -48,7 +48,7 @@ namespace LinkedLists {
         // 求链表 长度 O(n)
         public int GetLength() {
             int len = 0;
-            for (Node<Item> x = nil.next; x != null; x = x.next) {
+            for (Node<Item> p = nil.next; p != null; p = p.next) {
                 len++;
             }
             return len;
@@ -60,7 +60,7 @@ namespace LinkedLists {
 
         // 遍历输出
         public void Travel() {
-            if (IsEmpty()) {
+            if (Empty()) {
                 Console.WriteLine("Empty Linked List");
             } else {
                 Node<Item> x = nil.next;
@@ -77,7 +77,7 @@ namespace LinkedLists {
         }
 
         // 判断单链表是否为空 O(1) 
-        public bool IsEmpty() {
+        public bool Empty() {
             // 或者: N == 0.
             return nil.next == null;
         }
@@ -86,7 +86,7 @@ namespace LinkedLists {
         public void InsertBeginning(Item another) {
             Node<Item> newNode = new Node<Item>(another);
 
-            if (IsEmpty()) {
+            if (Empty()) {
                 tail = newNode;
             }
 
@@ -98,7 +98,7 @@ namespace LinkedLists {
 
         // 头部 - 删除 O(1) 
         public Item RemoveBeginning() {
-            if (IsEmpty()) {
+            if (Empty()) {
                 Console.WriteLine("Empty Linked List");
                 return default(Item);
             }
@@ -107,7 +107,7 @@ namespace LinkedLists {
 
             nil.next = nil.next.next;
 
-            if (IsEmpty()) {
+            if (Empty()) {
                 tail = nil;
             }
 
@@ -120,7 +120,7 @@ namespace LinkedLists {
         public void InsertEnd(Item another) {
             Node<Item> newNode = new Node<Item>(another);
 
-            if (IsEmpty()) {
+            if (Empty()) {
                 nil.next = newNode;
             } 
 
@@ -132,7 +132,7 @@ namespace LinkedLists {
 
         // 搜索第一个值为 data 的节点，返回这个节点
         private Node<Item> Search(Item data) {
-            if (IsEmpty()) {
+            if (Empty()) {
                 Console.WriteLine("Empty Linked List");
             }
             Node<Item> current = nil.next;
@@ -164,7 +164,7 @@ namespace LinkedLists {
 
         // 获取第 k 个节点的值
         public Item GetElem(int i) {
-            if (IsEmpty() || i < 0 || i > Size()) {
+            if (Empty() || i < 0 || i > Size()) {
                 Console.WriteLine("LinkList is empty or position is error! ");
                 return default(Item);
             }
