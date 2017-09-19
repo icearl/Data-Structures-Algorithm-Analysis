@@ -13,18 +13,19 @@ namespace CS_sort {
             // 计数数组
             int[] countingArr = new int[k];
             // 计数数组初始化为 0
-            for (int i = 0; i <= k - 1; i++) {
+            // 包括 0 和 k
+            for (int i = 0; i <= k; i++) {
                 countingArr[i] = 0;
             }
-            // 单个元素计数(经过该步骤,countingArr[i]的含义为数字 i 的个数为countingArr[i])  
+            // 单个元素计数(经过该步骤,countingArr[i]的含义为数字 i 的个数为countingArr[i])
             for (int i = 0; i <= arrLen - 1; i++) {
                 countingArr[arr[i]]++;
             }
-            // 计算小于等于某数的个数(经过该步骤countingArray[i]的含义为小于等于数字i的元素个数为countingArray[i])  
+            // 计算小于等于某数的个数(经过该步骤countingArray[i]的含义为小于等于数字i的元素个数为countingArray[i])
             for (int i = 1; i <= k - 1; i++) {
                 countingArr[i] += countingArr[i - 1];
             }
-            // 得到排序后的结果  
+            // 得到排序后的结果
             for (int i = 0; i <= arrLen - 1; i++) {
                 // arr[i] 是第 countingArr[arr[i]] 个元素，因为 sortedArr 下标从 0 开始，所以要 -1
                 int index = countingArr[arr[i]] - 1;
