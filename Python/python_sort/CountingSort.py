@@ -14,5 +14,5 @@ def countingSort(list, k):
 
 list=[3, 2, 4, 1, 59, 23, 13, 1, 3]
 print(list)
-list = countingSort(list,59)
+list = countingSort(list, 59)
 print(list)
