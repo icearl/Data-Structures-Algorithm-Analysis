@@ -1,17 +1,24 @@
+# 插入排序：
+# 始终在列表的较低位置维护一个排序的子列表。然后将每个新项 “插入” 回先前的子列表。
+#O(n^2 )
+
+
 def insertionSort(list):
     length = len(list)
     for i in range(1, length):
         item = list[i]
-        j = i - 1
-        while j >= 0:
-            if list[j] > item:
-                list[j + 1] = list[j]
-                j -= 1
+        last_index = i - 1
+        while last_index >= 0:
+            # 如果前面有比 item 大的，就把 item 往前插
+            if list[last_index] > item:
+                list[last_index + 1] = list[last_index]
+                last_index -= 1
             else:
                 break
-        list[j + 1] = item
+        list[last_index + 1] = item
 
-list = [3, 2, 4, 1, 59, 23, 13, 1, 3]
-print(list)
-insertionSort(list)
-print(list)
+
+li = [3, 2, 4, 1, 59, 23, 13, 1, 3]
+print(li)
+insertionSort(li)
+print(li)

@@ -15,7 +15,7 @@ def bubble_sort2(list):
     length = len(list)
     exchanged = True
     for index in range(length):
-        if exchanged == False:
+        if not exchanged:
             break
         exchanged =False
         for i in range(1, length - index):
