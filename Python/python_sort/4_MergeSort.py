@@ -1,3 +1,6 @@
+# 归并排序
+# O(n * log(n))
+
 def mergesort(seq):
     """归并排序"""
     if len(seq) <= 1:
