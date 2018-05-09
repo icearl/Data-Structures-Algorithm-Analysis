@@ -104,15 +104,14 @@ class Tree(object):
         :param root:
         :return:
         """
-        if root == None:
+        if root is None:
             return
         myQueue = []
         node = root
         myQueue.append(node)
         while myQueue:
             node = myQueue.pop(0)
-            print
-            node.val
+            print(node.val)
             if node.lchild != None:
                 myQueue.append(node.lchild)
             if node.rchild != None:

@@ -3,7 +3,7 @@
 # 一种选择排序
 # 大顶堆：一种完全二叉树，每个节点的值 >= 其左右孩子节点的值
 
-def MaxHeapify(heap,HeapSize,root):#在堆中做结构调整使得父节点的值大于子节点
+def MaxHeapify(heap, HeapSize, root):#在堆中做结构调整使得父节点的值大于子节点
 
     left = 2 * root + 1
     right = left + 1
@@ -12,8 +12,8 @@ def MaxHeapify(heap,HeapSize,root):#在堆中做结构调整使得父节点的�
         larger = left
     if right < HeapSize and heap[larger] < heap[right]:
         larger = right
-    if larger != root:#如果做了堆调整则larger的值等于左节点或者右节点的，这个时候做对调值操作
-        heap[larger],heap[root] = heap[root],heap[larger]
+    if larger != root:  # 如果做了堆调整则larger的值等于左节点或者右节点的，这个时候做对调值操作
+        heap[larger], heap[root] = heap[root], heap[larger]
         MaxHeapify(heap, HeapSize, larger)
 
 

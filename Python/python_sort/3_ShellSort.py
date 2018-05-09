@@ -4,7 +4,7 @@ def shell_sort(list):
     length = len(list)
     gap = int(length / 2)
     while gap > 0:
-        # 分成 gap 个小组
+        # 分成 gap 个小组，分别排序
         for i in range(gap):
             gapInsertionSort(list, gap, i)
         gap = int(gap / 2)

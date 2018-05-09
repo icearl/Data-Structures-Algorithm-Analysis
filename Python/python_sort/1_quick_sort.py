@@ -6,7 +6,7 @@ def sort(alist):
     quickSort(alist, 0, len(alist) - 1)
 
 # 指定从哪开始快排
-def quickSort(arr,i,j):
+def quickSort(arr, i, j):
     if i < j:
         base_index = randomizedPartition(arr, i, j)
         quickSort(arr, i, base_index - 1)

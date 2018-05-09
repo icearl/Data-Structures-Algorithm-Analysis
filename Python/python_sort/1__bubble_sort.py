@@ -17,7 +17,7 @@ def bubble_sort2(list):
     for index in range(length):
         if not exchanged:
             break
-        exchanged =False
+        exchanged = False
         for i in range(1, length - index):
             if list[i-1] > list[i]:
                 list[i], list[i-1] = list[i-1], list[i]
