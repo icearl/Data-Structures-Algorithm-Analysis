@@ -29,6 +29,9 @@ a.keys()
 # 以列表返回字典中的所有值
 a.values()
 
+"""删除对 k, v"""
+a.pop('name')
+
 # 以列表返回可遍历的(键, 值) 元组数组
 # python3 没有 iteritems，只有 items
 a.items()

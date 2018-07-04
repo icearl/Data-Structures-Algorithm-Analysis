@@ -10,6 +10,11 @@
 输入: s1 = "aabcc", s2 = "dbbca", s3 = "aadbbbaccc"
 输出: false
 """
+
+"""
+C由A和B交错组成:C包含且仅包含A，B中所有字符，且对应的顺序不改变。
+如何确定变量边缘（比如是i还是 i + 1）：通过举例，画图带入具体例子得到通式。
+"""
 class Solution:
     """
     @params s1, s2, s3: Three strings as description.
@@ -42,9 +47,9 @@ class Solution:
             for j in range(len(s2)):
                 # 先初始化为不行
                 interleave[i + 1][j + 1] = False
-                # 如果用 i ，那就看上一个走的 j 是不是可以
-                if s1[i] == s3[i + j + 1]:
-                    interleave[i + 1][j + 1] = interleave[i][j + 1]
+                # 如果用 s1(从左边走)，那就看左边那个位置之前是否成功
+                if s1[i] == s3[i + j + 1]:                          # 这一步可以
+                    interleave[i + 1][j + 1] = interleave[i][j + 1] # 之前是否可以
                 if s2[j] == s3[i + j + 1]:
                     interleave[i + 1][j + 1] |= interleave[i + 1][j]
         return interleave[len(s1)][len(s2)]
