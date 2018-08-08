@@ -23,9 +23,12 @@ class Solution:
     # 返回从尾部到头部的列表值序列，例如[1,2,3]
     def printListFromTailToHead(self, listNode):
         # write code here
-        l = []
-        while(listNode):
-            l.append(listNode.val) #l中存储的是每个listNode节点.val属性的值
-            listNode = listNode.next #这步将listNode每次更新到指向的下一个节点，到这步之后l是从头到尾的整个链表
-        print l[::-1]
+        p = listNode
+        res = []
+        while p is not None:
+            # res中存储的是每个listNode节点.val属性的值
+            res.append(p.val)
+            # 这步将 p 每次更新到指向的下一个节点，到这步之后l是从头到尾的整个链表
+            p = p.next
+        # print l[::-1]
         return l[::-1]

@@ -12,11 +12,11 @@ NOTE：给出的所有元素都大于0，若数组大小为0，请返回0。
 
 本题思路：
 方法一：遍历，蠢
-方法二：二分法
-维护两个指针，一个指向大数组，一个指向小数组，往中间缩小，知道两个指针碰上。
-注意两点：
-1. 把 0 个元素方法到后面怎么办
-2. 如果 sta，mid，end 相同怎么办  
+方法二：二分法 - 思路 http://www.cnblogs.com/edisonchou/p/4746561.html
+    维护两个指针，一个指向大数组，一个指向小数组，往中间缩小，知道两个指针碰上。
+    注意两点：
+    1. 把 0 个元素方法到后面怎么办
+    2. 如果 sta，mid，end 相同怎么办  
 """
 
 # 方法一：遍历
@@ -66,20 +66,21 @@ class Solution:
 class Solution:
     def minNumberInRotateArray(self, rotateArray):
         length = len(rotateArray)
+
         if length == 0:
             return 0
         if length == 1:
             return rotateArray[0]
 
-        sta, mid, end = 0, 0, length - 1
-        # Ensure this requisite before binary search
+        sta, end = 0, length - 1
+        # 意外情况1: 要时刻保证右边的值更大
         while rotateArray[sta] >= rotateArray[end]:
+            # 两个指针挨上了，那么后面那个就是
             if end - sta == 1:
-                mid = end
-                break
-            # Get the middle index
+                return rotateArray[end]
+
             mid = (sta + end) / 2
-            # Find the minimum in order
+            # 意外情况2，如果三者一样，要找中间的最小值
             if (rotateArray[sta] == rotateArray[mid]) and (rotateArray[mid] == rotateArray[end]):
                 minimum = rotateArray[sta]
                 for i in range(sta + 1, end + 1):
@@ -93,4 +94,5 @@ class Solution:
                 end = mid
 
         return rotateArray[mid]
+
 

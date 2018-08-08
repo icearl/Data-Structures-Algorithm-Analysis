@@ -10,7 +10,7 @@
 
 # 本题思路：
 # 从右上角开始找，如果比当前值小则列-1，比当前值大则行+1
-
+# 图见 onenote
 
 class Solution:
     # array 二维列表
@@ -24,10 +24,21 @@ class Solution:
 
         while i < row and j >= 0:
             if array[i][j] == target:
-                return 1
+                return True
+            # 如果要找的在左边，那就 j - 1
             if array[i][j] > target:
                 j -= 1
             if array[i][j] < target:
                 i += 1
 
-        return 0
+        return False
+
+array = [[1, 2, 8, 9],
+         [2, 4, 9, 12],
+         [4, 7, 10, 13],
+         [6, 8, 11, 15]]
+
+
+findtarget = Solution()
+print(findtarget.find(12, array))
+

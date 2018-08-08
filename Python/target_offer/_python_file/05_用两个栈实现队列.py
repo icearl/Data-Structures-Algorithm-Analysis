@@ -20,16 +20,26 @@
 
 class Solution:
     def __init__(self):
-        self.stack1 = []
-        self.stack2 = []
-
+        self.in_stack = []
+        self.out = []
     def push(self, node):
         # write code here
-        self.stack1.append(node)
-
+        self.in_stack.append(node)
     def pop(self):
         # return xx
-        if self.stack2 == []:
-            while self.stack1 != []:
-                self.stack2.append(self.stack1.pop())
-        return self.stack2.pop()
+        if self.out == []:
+            while self.in_stack != []:
+                self.out.append(self.in_stack.pop())
+        return self.out.pop()
+
+
+P = Solution()
+P.push(10)
+P.push(11)
+P.push(12)
+print(P.pop())
+P.push(13)
+print(P.pop())
+print(P.pop())
+print(P.pop())
+print(P.pop())
