@@ -13,6 +13,8 @@ class TreeNode:
 
 """
 先查找根节点，然后判断以这个根节点开始的是否对应相同
+要解耦，能用函数实现就用函数实现，功能分离，思考更顺畅
+python 的可边变量是传引用的
 """
 
 class Solution:
@@ -27,6 +29,7 @@ class Solution:
             if not result:
                 result = self.HasSubtree(pRoot1.right, pRoot2)
         return result
+
     # 用于递归判断树的每个节点是否相同
     # 需要注意的地方是: 前两个if语句不可以颠倒顺序
     # 如果颠倒顺序, 会先判断pRoot1是否为None, 其实这个时候pRoot2的结点已经遍历完成确定相等了, 但是返回了False, 判断错误
