@@ -18,9 +18,9 @@ class Solution:
             return None
         if root.left is not None or root.right is not None:
             root.left, root.right = root.right, root.left
-        if root.left:
+        if root.left is not None:
             self.Mirror(root.left)
-        if root.right:
+        if root.right is not None:
             self.Mirror(root.right)
         return root
 
