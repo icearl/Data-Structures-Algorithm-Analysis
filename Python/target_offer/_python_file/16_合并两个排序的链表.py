@@ -2,6 +2,13 @@
 输入两个单调递增的链表，输出两个链表合成后的链表，当然我们需要合成后的链表满足单调不减规则。
 '''
 
+"""
+思路：
+1. 按小的往里合
+2. 剩下的直接接后面就可以
+注意：merge 链表，初始化的时候，可以用 nil 来简化操作（不用考虑p_head1 or p_head2 第一个节点是否为 None）
+"""
+
 class ListNode:
     def __init__(self, x):
         self.val = x
@@ -26,26 +33,36 @@ class Solution:
 
         return pMergedHead
 
-    def Merge(pHead1, pHead2):
+    def Merge(self, pHead1, pHead2):
         """
         循环法
+        :param pHead1:
+        :param pHead2:
+        :return:
         """
-        nil = ListNode(-1)
-        p = nil
-        p1 = pHead1
-        p2 = pHead2
-        while p1 is not None and p2 is not None:
-            if p1.val <= p2.val:
-                p.next = p1
-                p1 = p1.next
+        p_head1 = pHead1
+        p_head2 = pHead2
+        if p_head1 is None:
+            return p_head2
+        if p_head2 is None:
+            return p_head1
+
+        p_cur = nil = ListNode(-1)
+
+        while p_head1 is not None and p_head2 is not None:
+            if p_head1.val <= p_head2.val:
+                p_cur.next = p_head1
+                p_head1 = p_head1.next
             else:
-                p.next = p2
-                p2 = p2.next
-            p = p.next
-        if p1 is not None:
-            p.next = p1
-        elif p2 is not None:
-            p.next = p2
+                p_cur.next = p_head2
+                p_head2 = p_head2.next
+            p_cur = p_cur.next
+
+        if p_head1 is not None:
+            p_cur.next = p_head1
+        if p_head2 is not None:
+            p_cur.next = p_head2
+
         return nil.next
 
 
@@ -62,5 +79,7 @@ node4.next = node5
 node5.next = node6
 
 S = Solution()
-S.Merge(node1, node4)
-print(node4.next.val)
+merge = S.Merge(node1, node4)
+while merge is not None:
+    print(merge.val)
+    merge = merge.next
