@@ -17,6 +17,7 @@
 3. 考虑某条边打不打印
 
 方法二：
+思路好理解
 旋转打印每一条边
 """
 
@@ -73,24 +74,27 @@ class Solution:
     def printMatrix(self, matrix):
         # write code here
         result = []
-        while matrix:
-            result.extend(matrix.pop(0))  # matrix弹出第一行
+        while matrix != []:
+            # matrix弹出第一行
             # 或者用result=result+matrix.pop(0),不能用result.append(matrix.pop(0))，
             # 因为它是一个列表不是元素，如果用append的话就将这段列表作为一个元素挂在后面了
-            if not matrix:  # 注意这里判断语句的位置
+            result.extend(matrix.pop(0))
+
+            # 注意这里判断语句的位置
+            if matrix == []:
                 break
             matrix = self.turn(matrix)
         return result
 
-    def turn(self, matrix):  # 将剩余的matrix部分逆时针旋转90°
+    def turn(self, matrix):         # 将剩余的matrix部分逆时针旋转90°
         new_matrix = []
-        row = len(matrix)  # 剩余部分的行数
-        col = len(matrix[0])  # 剩余部分的列数
-        for j in range(col):  # 对于每一列
-            eachcolumn = []
-            for i in range(row):  # 对于每一行
-                eachcolumn.append(matrix[i][j])  # 这里每个循环eachcolumn以行的形式存储输出当前矩阵最左边的列
-            new_matrix.append(eachcolumn)  # 相当于将当前矩阵最左边的列以行的形式一行一行的添加到newmatrix矩阵下面，此时行的顺序与目标矩阵的顺序是相反的
+        row = len(matrix)           # 剩余部分的行数
+        col = len(matrix[0])        # 剩余部分的列数
+        for j in range(col):        # 对于每一列
+            each_column = []
+            for i in range(row):    # 对于每一行
+                each_column.append(matrix[i][j])  # 这里每个循环eachcolumn以行的形式存储输出当前矩阵最左边的列
+            new_matrix.append(each_column)  # 相当于将当前矩阵最左边的列以行的形式一行一行的添加到newmatrix矩阵下面，此时行的顺序与目标矩阵的顺序是相反的
         new_matrix.reverse()  # 将newmatrix矩阵的行顺序倒过来 #另一种思路，生成newmatrix矩阵的时候直接用从最右边的列开始一行一行添加
         return new_matrix
 
