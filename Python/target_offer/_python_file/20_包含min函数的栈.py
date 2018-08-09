@@ -4,32 +4,40 @@
 '''
 
 """
-另外维护一个最小值组成的栈
+思路：
+一个存储数值的栈 val
+另外维护一个最小值组成的栈 min
+当 val 为空的时候，直接把当前的 node 加到 min 栈上，否则比较一下当前 min 和当前 node，把小的加到 min 上
 """
 
 # -*- coding:utf-8 -*-
 class Solution:
     def __init__(self):
-        self.stack = []
-        self.minStack = []
+        self.stack_val = []
+        self.stack_min = []
+
     def push(self, node):
-        self.stack.append(node)
-        if self.minStack == [] or node < self.min():
-            self.minStack.append(node)
+        if self.stack_val == []:
+            self.stack_min.append(node)
         else:
-            temp = self.min()
-            self.minStack.append(temp)
+            if self.min() > node:
+                self.stack_min.append(node)
+            else:
+                self.stack_min.append(self.min())
+        self.stack_val.append(node)
 
     def pop(self):
-        if self.stack == [] or self.minStack == []:
+        if self.stack_val == [] or self.stack_min == []:
             return None
-        self.minStack.pop()
-        self.stack.pop()
+        a = self.stack_val.pop()
+        self.stack_min.pop()
+        return a
 
     def top(self):
-        return self.stack[-1]
+        return self.stack_val[-1]
+
     def min(self):
-        return self.minStack[-1]
+        return self.stack_min[-1]
 
 S = Solution()
 S.push(3)
