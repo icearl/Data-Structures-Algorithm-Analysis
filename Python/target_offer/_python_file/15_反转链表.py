@@ -16,17 +16,22 @@ class Solution:
         """
         循环法:前插法
         """
-        if pHead is None or pHead.next is None:  # 如果链表是空或者链表只有一个节点
-            return pHead
-        pNode = pHead
-        pPrev = None
-        while pNode is not None:
-            pNext = pNode.next
-            pNode.next = pPrev
+        p_head = pHead
+        # 如果链表是空或者链表只有一个节点
+        if p_head is None or p_head.next is None:
+            return p_head
 
-            pPrev = pNode
-            pNode = pNext
-        return pPrev
+        p_pre = None
+        p_cur = p_head
+        # 到底是 p_cur 还是 p_cur.next 要根据初始条件考虑，要让初始也满足，只能用 p_cur
+        while p_cur is not None:
+            p_next = p_cur.next
+            p_cur.next = p_pre
+
+            p_pre = p_cur
+            p_cur = p_next
+
+        return p_pre
 
     # 递归实现反转链表
     def ReverseListRec(self, pHead):
