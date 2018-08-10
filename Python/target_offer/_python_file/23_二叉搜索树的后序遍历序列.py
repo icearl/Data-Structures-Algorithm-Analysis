@@ -10,35 +10,25 @@
 思路：先假定序列是后续搜索的顺序，再根据条件判断
 
 二叉搜索树 - 概念：
-若任意节点的左子树不空，则左子树上所有节点的值均小于它的根节点的值；
-若任意节点的右子树不空，则右子树上所有节点的值均大于它的根节点的值；
-任意节点的左、右子树也分别为二叉搜索树；
-没有键值相等的节点。
+    若任意节点的左子树不空，则左子树上所有节点的值均小于它的根节点的值；
+    若任意节点的右子树不空，则右子树上所有节点的值均大于它的根节点的值；
+    任意节点的左、右子树也分别为二叉搜索树；
+    没有键值相等的节点。
 后序遍历：左子树-右子树-根节点
 """
 
 # -*- coding:utf-8 -*-
 class Solution:
-    def VerifySquenceOfBST(self, sequence):
+    def VerifySquenceOfBST1(self, sequence):
         if sequence == [] or sequence is None:
             return False
 
         root = sequence[-1]
         length = len(sequence)
-        if min(sequence) > root or max(sequence) < root:
-            return True
         index = 0
         # 二叉搜索树的左子树结点小于根节点
-        '''
-        下面这个for循环特别需要主要index=i必须写在if语句外面,
-        否则就会发生当root结点前的所有元素小于root的时候, 正确判断应该为True,
-        但是因为if语句没有进入, index = 0 ,
-        在进入二叉搜索树的右子树结点大于根结点的for循环的时候, 因为sequence的数都小于root, 就会判断出错
-        '''
-        for i in range(length-1):
-            index = i
-            if sequence[i] > root:
-                break
+        while sequence[index] < root: #left最终为root的左子树的节点个数，求出左子树节点个数就知道了左子树和右子树各自节点个数
+            index += 1
 
         # 二叉搜索树的右子树结点大于根结点
         # 这个循环中范围起始点必须是index+1, 不能为index
@@ -58,6 +48,23 @@ class Solution:
         if index < length-1:
             right = self.VerifySquenceOfBST(sequence[index:length-1])
         return left and right
+
+    def VerifySquenceOfBST2self, sequence):
+        # write code here
+        length = len(sequence)
+        if length == 0:
+            return False
+        if length == 1:
+            return True
+        root = sequence[-1]
+        left = 0
+        while sequence[left] < root: #left最终为root的左子树的节点个数，求出左子树节点个数就知道了左子树和右子树各自节点个数
+            left += 1
+        for j in range(left, length-1):#对右子树中的节点进行判断
+            if sequence[j] < root:
+                return False
+        #递归调用，对左子树右子树内部进行判断
+        return self.VerifySquenceOfBST(sequence[:left]) or self.VerifySquenceOfBST(sequence[left:length-1])
 
 array = [5, 7, 6, 9, 11, 10, 8]
 array2 = [7, 4, 6, 5]

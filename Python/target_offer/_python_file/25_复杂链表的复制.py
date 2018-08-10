@@ -6,8 +6,8 @@
 
 """
 本题思路：
-1. 复制链表，设置 next 
-2. 设置 random
+1. 复制链表，设置 next (a->b中间插入 a')
+2. 设置 random(a的 ramdom -> a' 的 random)
 3. 拆开链表
 """
 
@@ -43,7 +43,7 @@ class Solution:
     # 将复制后的链表中的复制结点的random指针链接到被复制结点random指针的后一个结点
     def ConnectRandomNodes(self, pHead):
         pNode = pHead
-        while pNode:
+        while pNode is not None:
             pCloned = pNode.next
             if pNode.random is not None:    # 原来的链表节点
                 pCloned.random = pNode.random.next
