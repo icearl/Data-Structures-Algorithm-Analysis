@@ -83,6 +83,7 @@ class Solution:
         result = numbers[0]
         times = 1
         for i in range(1, length):
+            # 为 0 的时候重置，不再比较
             if times == 0:
                 result = numbers[i]
                 times = 1
@@ -90,6 +91,7 @@ class Solution:
                 times += 1
             else:
                 times -= 1
+        # 检查是不是真的超过了
         if not self.CheckMoreThanHalf(numbers, length, result):
             result = 0
         return result
