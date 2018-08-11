@@ -20,35 +20,31 @@ class TreeNode:
         self.right = None
 class Solution:
     def Convert(self, pRootOfTree):
-        if pRootOfTree is None:
-            return None
-        if pRootOfTree.left is None and pRootOfTree.right is None:
-            return pRootOfTree
+        def Convert(self, pRootOfTree):
+            if pRootOfTree is None:
+                return None
+            if pRootOfTree.left is None and pRootOfTree.right is None:
+                return pRootOfTree
+            # 处理左子树
+            left = self.Convert(pRootOfTree.left)
+            if left is not None:
+                p_left = left
+                # 找左子树最大结点
+                while p_left.right is not None:
+                    p_left = p_left.right
+                # 连接根与左子树最大结点
+                p_left.right, pRootOfTree.left = pRootOfTree, p_left
 
-        # 处理左子树
-        self.Convert(pRootOfTree.left)
-        left = pRootOfTree.left
+            # 处理右子树
+            right = self.Convert(pRootOfTree.right)
+            if right is not None:
+                # 连接根与右子树最小结点
+                pRootOfTree.right, right.left, = right, pRootOfTree
 
-        # 连接根与左子树最大结点
-        if left:
-            while left.right:
-                left = left.right
-            pRootOfTree.left, left.right = left, pRootOfTree
-
-        # 处理右子树
-        self.Convert(pRootOfTree.right)
-        right = pRootOfTree.right
-
-        # 连接根与右子树最小结点
-        if right:
-            while right.left:
-                right = right.left
-            pRootOfTree.right, right.left = right, pRootOfTree
-        # 需要返回链表头
-        while pRootOfTree.left:
-            pRootOfTree = pRootOfTree.left
-
-        return pRootOfTree
+            if left is not None:
+                return left
+            else:
+                return pRootOfTree
 
 pNode1 = TreeNode(8)
 pNode2 = TreeNode(6)
@@ -57,7 +53,11 @@ pNode4 = TreeNode(5)
 pNode5 = TreeNode(7)
 pNode6 = TreeNode(9)
 pNode7 = TreeNode(11)
-
+'''
+        8
+    6       10
+5      7 9      11
+'''
 pNode1.left = pNode2
 pNode1.right = pNode3
 pNode2.left = pNode4
