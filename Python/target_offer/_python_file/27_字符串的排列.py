@@ -10,8 +10,14 @@
 """
 从最简单的情况考虑
 考虑递归和动态规划
+
 分解，发现递归可以
 分成两部分考虑
+递归经典两步走
+1. 基本情况
+2. 假设完成，递归  -> 合并
+
+注意：重复字符的话，直接跳过，不重复添加
 """
 # -*- coding:utf-8 -*-
 class Solution:
@@ -23,13 +29,17 @@ class Solution:
             return list(ss)
         # 字符串转成 list
         charList = list(ss)
+        # 排序
         charList.sort()
+        # 保存结果 [str, ]
         res_list = []
+        # 对每一个字符都要当成第一个试一下
         for i in range(len(charList)):
             first_char = charList[i]
             # 有重复的话，就是一种
             if i > 0 and charList[i] == charList[i-1]:
                 continue
+            # 对剩下的进行递归
             left_list = self.Permutation(''.join(charList[:i])+''.join(charList[i+1:]))
             for left in left_list:
                 res_list.append(first_char + left)
