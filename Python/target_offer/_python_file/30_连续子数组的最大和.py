@@ -7,28 +7,34 @@
 
 """
 动态规划分析
-还有一种思路是
+1、 子状态：以某一个字符为尾子串的最大和
+2、 基本情况:第一个启动 
+3、 递推式
+
+cur_sum <= 0 那就加上当前 arr[i]，否则置cur_sum为arr[i]
+
 aList[i-1] + array[i] 与 array[i]比较，哪个大取哪个
 """
 # -*- coding:utf-8 -*-
 class Solution:
+    # 动态规划 空间O(1)
     def FindGreatestSumOfSubArray(self, array):
         if array == None or len(array) <= 0:
             return 0
 
-        nCurSum = 0
-        nGreatestSum = array[0]
+        cur_sum = 0
+        max_sum = array[0]
         for i in range(len(array)):
-            if nCurSum <= 0:
-                nCurSum = array[i]
+            if cur_sum <= 0:
+                cur_sum = array[i]
             else:
-                nCurSum += array[i]
+                cur_sum += array[i]
 
-            if nCurSum > nGreatestSum:
-                nGreatestSum = nCurSum
+            if cur_sum > max_sum:
+                max_sum = cur_sum
 
-        return nGreatestSum
-    # 动态规划解决问题
+        return max_sum
+    # 动态规划 空间O(n)
     def FindGreatestSumOfSubArray2(self, array):
         if array == None or len(array) <= 0:
             return 0
