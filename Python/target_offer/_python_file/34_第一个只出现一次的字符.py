@@ -3,22 +3,22 @@
 '''
 
 """
-构造哈希表
+构造哈希表：char: time_of_showup
 """
 # -*- coding:utf-8 -*-
 class Solution:
     def FirstNotRepeatingChar(self, s):
-        if s == None or len(s) <= 0:
+        if s is None or s == '':
             return -1
+
         alphabet = {}
-        alist = list(s)
-        for i in alist:
-            if i not in alphabet.keys():
-                alphabet[i] = 0
-            alphabet[i] += 1
-        for i in alist:
-            if alphabet[i] == 1:
-                return i
+        for char in s:
+            if char not in alphabet.keys():
+                alphabet[char] = 0
+            alphabet[char] += 1
+        for char in s:
+            if alphabet[char] == 1:
+                return s.index(char)
         return -1
 
 s = Solution()
