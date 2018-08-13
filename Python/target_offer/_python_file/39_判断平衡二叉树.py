@@ -3,8 +3,14 @@
 '''
 
 """
+备注
 平衡二叉树（Self-balancing binary search tree）又被称为AVL树（有别于AVL算法），且具有以下性质：
-它是一 棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树。
+它是一棵空树 或 它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树。
+
+思路：
+方法一、 利用二叉树深度函数，递归
+
+方法二、 改造二叉树深度函数，在过程中修改 flag 
 """
 
 # -*- coding:utf-8 -*-
@@ -41,7 +47,7 @@ class Solution2:
         return self.flag
 
     def getDepth(self, pRoot):
-        if pRoot == None:
+        if pRoot is None:
             return 0
         left = 1 + self.getDepth(pRoot.left)
         right = 1 + self.getDepth(pRoot.right)
