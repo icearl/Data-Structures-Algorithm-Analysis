@@ -23,7 +23,7 @@ class TreeNode:
 class Solution:
     def IsBalanced_Solution(self, pRoot):
         # write code here
-        if pRoot == None:
+        if pRoot is None:
             return True
         if abs(self.TreeDepth(pRoot.left) - self.TreeDepth(pRoot.right)) > 1:
             return False
