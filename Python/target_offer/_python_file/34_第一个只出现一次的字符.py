@@ -3,6 +3,7 @@
 '''
 
 """
+复杂度：O(n)
 构造哈希表：char: time_of_showup
 """
 # -*- coding:utf-8 -*-
