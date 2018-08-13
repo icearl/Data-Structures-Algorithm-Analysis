@@ -10,13 +10,14 @@
 怎么增加：维护三个下标，指的是刚刚超过当前最大丑数的2/3/5下标
 """
 
+
 # -*- coding:utf-8 -*-
 class Solution:
     def GetUglyNumber_Solution(self, index):
         if index is None and len(index) <= 0:
             return 0
-
-        uglyNumbers = [1]*index
+        # 维护一个丑数列表
+        uglyNumbers = [1] * index
         nextIndex = 1
 
         index2 = 0
@@ -24,16 +25,20 @@ class Solution:
         index5 = 0
 
         while nextIndex < index:
-            minVal = min(uglyNumbers[index2]*2, uglyNumbers[index3]*3, uglyNumbers[index5]*5)
+            minVal = min(uglyNumbers[index2] * 2, uglyNumbers[index3] * 3, uglyNumbers[index5] * 5)
             uglyNumbers[nextIndex] = minVal
 
-            while uglyNumbers[index2]*2 <= uglyNumbers[nextIndex]:
+            while uglyNumbers[index2] * 2 <= uglyNumbers[nextIndex]:
                 index2 += 1
-            while uglyNumbers[index3]*3 <= uglyNumbers[nextIndex]:
+            while uglyNumbers[index3] * 3 <= uglyNumbers[nextIndex]:
                 index3 += 1
-            while uglyNumbers[index5]*5 <= uglyNumbers[nextIndex]:
+            while uglyNumbers[index5] * 5 <= uglyNumbers[nextIndex]:
                 index5 += 1
 
             nextIndex += 1
 
         return uglyNumbers[-1]
+
+
+s = Solution()
+print(s.GetUglyNumber_Solution(11))
