@@ -40,28 +40,28 @@ class Solution:
         :param pHead2:
         :return:
         """
-        nLength1 = self.GetListLength(pHead1)
-        nLength2 = self.GetListLength(pHead2)
-        nLengthDiff = abs(nLength1 - nLength2)
+        len_1 = self.linklist_len(pHead1)
+        len_2 = self.linklist_len(pHead2)
+        sub_len = abs(len_1 - len_2)
 
-        if nLength1 > nLength2:
-            pListHeadLong = pHead1
-            pListHeadShort = pHead2
+        p_node1 = pHead1
+        p_node2 = pHead2
+        # 长的先把长的那一段走完
+        if len_1 >= len_2:
+            for i in range(sub_len):
+                p_node1 = p_node1.next
         else:
-            pListHeadLong = pHead2
-            pListHeadShort = pHead1
+            for i in range(sub_len):
+                p_node2 = p_node2.next
 
-        for i in range(nLengthDiff):
-            pListHeadLong = pListHeadLong.next
+        while p_node1 is not None:
+            if p_node1.val == p_node2.val:
+                return p_node1
+            p_node1 = p_node1.next
+            p_node2 = p_node2.next
+        return None
 
-        while pListHeadLong != None and pListHeadShort != None and pListHeadLong != pListHeadShort:
-            pListHeadLong = pListHeadLong.next
-            pListHeadShort = pListHeadShort.next
-
-        pFirstCommonNode = pListHeadLong
-        return pFirstCommonNode
-
-    def GetListLength(self, pHead):
+    def linklist_len(self, pHead):
         nLength = 0
         while pHead != None:
             pHead = pHead.next
