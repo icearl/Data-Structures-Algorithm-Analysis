@@ -14,10 +14,10 @@
 # -*- coding:utf-8 -*-
 class Solution:
     def GetUglyNumber_Solution(self, index):
-        if index is None and len(index) <= 0:
+        if index is None or index <= 0:
             return 0
         # 维护一个丑数列表
-        uglyNumbers = [1] * index
+        ugly_list = [1] * index
         nextIndex = 1
 
         index2 = 0
@@ -25,19 +25,19 @@ class Solution:
         index5 = 0
 
         while nextIndex < index:
-            minVal = min(uglyNumbers[index2] * 2, uglyNumbers[index3] * 3, uglyNumbers[index5] * 5)
-            uglyNumbers[nextIndex] = minVal
+            min_val = min(ugly_list[index2] * 2, ugly_list[index3] * 3, ugly_list[index5] * 5)
+            ugly_list[nextIndex] = min_val
 
-            while uglyNumbers[index2] * 2 <= uglyNumbers[nextIndex]:
+            while ugly_list[index2] * 2 <= ugly_list[nextIndex]:
                 index2 += 1
-            while uglyNumbers[index3] * 3 <= uglyNumbers[nextIndex]:
+            while ugly_list[index3] * 3 <= ugly_list[nextIndex]:
                 index3 += 1
-            while uglyNumbers[index5] * 5 <= uglyNumbers[nextIndex]:
+            while ugly_list[index5] * 5 <= ugly_list[nextIndex]:
                 index5 += 1
 
             nextIndex += 1
 
-        return uglyNumbers[-1]
+        return ugly_list[-1]
 
 
 s = Solution()
