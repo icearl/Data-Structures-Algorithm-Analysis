@@ -10,14 +10,28 @@
 """
 
 
-# -*- coding:utf-8 -*-
+# 方法一：最简单
 class Solution:
     # 直接利用Python的语句进行字符串的翻转
     def ReverseSentence2(self, s):
         l = s.split(' ')
         return ' '.join(l[::-1])
+# 方法二：方法一的解释版
+class Solution:
+    def ReverseSentence(self, s):
+        # write code here
+        if not s:
+            return s
+        # 单词保持先后，单词之间的先后顺序反转
+        s = s.split(" ")
+        news = []
+        for word in range(len(s)-1, -1, -1):
+            news.append(s[word])
+            # if word:
+            #     news.append(" ")
+        return " ".join(news)
 
-
+# 方法三：书上的版本
 class Solution:
     def reverse(self, s):
         s = list(s)
@@ -38,6 +52,8 @@ class Solution:
             i = self.reverse(i)
             res.append(i)
         return ''.join(res[:])
+
+
 
 
 str = 'I am a student.'

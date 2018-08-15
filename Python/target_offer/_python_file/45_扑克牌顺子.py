@@ -1,7 +1,7 @@
 '''
 书：61
 随机从扑克牌中抽出了5张牌,判断是不是顺子,
-决定大\小 王可以看成任何数字,并且A看作1,J为11,Q为12,K为13。
+决定大\小 王(0)可以看成任何数字,并且A看作1,J为11,Q为12,K为13。
 '''
 
 """
@@ -24,4 +24,19 @@ class Solution:
                 if zeroNum < 0:
                     return False
         return True
+
+
+test = ['A', 3, 2, 5, 0]
+test2 = [0, 3, 1, 6, 4]
+s = Solution()
+print(s.IsContinuous(test2))
+
+
+
+
+
+
+
+
+
 
