@@ -22,9 +22,9 @@
 #         self.right = None
 class Solution:
     def isSymmetrical1(self, pRoot1, pRoot2):
-        if pRoot1 == None and pRoot2 == None:
+        if pRoot1 is None and pRoot2 is None:
             return True
-        if pRoot1 == None or pRoot2 == None:  # 两者都为真的情况在上一条过滤掉了
+        if pRoot1 is None or pRoot2 is None:  # 两者都为真的情况在上一条过滤掉了
             return False
         if pRoot1.val != pRoot2.val:
             return False

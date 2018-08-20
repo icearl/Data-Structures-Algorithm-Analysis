@@ -13,6 +13,13 @@
 注意，树中的结点不仅包含左右子结点，同时包含指向父结点的指针。
 """
 
+"""
+1、 先找右节点，有的话，找到右节点最左边的那个
+2、 找父节点
+    1、 如果是父节点的左儿子，直接返回父亲节点
+    2、 若为右儿子，一直往上找，知道找到是父亲的左儿子的那个节点，返回之
+"""
+
 # -*- coding:utf-8 -*-
 # class TreeLinkNode:
 #     def __init__(self, x):
@@ -25,13 +32,13 @@ class Solution:
         # write code here
         if not pNode:
             return pNode
-        if pNode.right:
-            left1=pNode.right
-            while left1.left:
-                   left1=left1.left
+        if pNode.right is not None:
+            left1 = pNode.right
+            while left1.left is not None:
+                left1 = left1.left
             return left1
-        while pNode.next: #pNode节点的父节点
-            tmp=pNode.next
-            if tmp.left==pNode:
+        while pNode.next is not None:  # pNode节点的父节点
+            tmp = pNode.next
+            if tmp.left == pNode:
                 return tmp
-            pNode=tmp
+            pNode = tmp
