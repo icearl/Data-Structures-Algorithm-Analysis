@@ -26,10 +26,16 @@
 没有键值相等的节点。
 
 二叉搜索树节点的大小关系从小到大就是中序遍历
+
+# 第三个节点是4
+# 前序遍历5324768
+# 中序遍历2345678
+# 后序遍历2436875
+# 所以是中序遍历，左根右
 """
 
 
-# 不够规范
+# 不够规范,遍历 k 次就够了现在得 n 次
 # -*- coding:utf-8 -*-
 # class TreeNode:
 #     def __init__(self, x):
@@ -39,23 +45,16 @@
 class Solution:
     # 返回对应节点TreeNode
     def KthNode(self, pRoot, k):
-        # write code here
-        # 第三个节点是4
-        # 前序遍历5324768
-        # 中序遍历2345678
-        # 后序遍历2436875
-        # 所以是中序遍历，左根右
-        global result
-        result = []
+        self.result = []
         self.midnode(pRoot)  # 根据中序遍历的顺序生成列表存储在result中
-        if k <= 0 or len(result) < k:
-            return None
+        if 0 < k <= len(self.result):
+            return self.result[k - 1]
         else:
-            return result[k - 1]
+            return None
 
     def midnode(self, root):  # 中序遍历
         if root is None:
             return None
         self.midnode(root.left)
-        result.append(root)
+        self.result.append(root)
         self.midnode(root.right)
