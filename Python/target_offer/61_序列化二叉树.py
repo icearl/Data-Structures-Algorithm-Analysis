@@ -18,6 +18,12 @@
 反序列化：根据字符串构建出对应的树
 """
 
+"""
+思路：
+分成三部分递归：
+根节点、左子树、右子树
+"""
+
 
 # -*- coding:utf-8 -*-
 # class TreeNode:
@@ -29,7 +35,7 @@ class Solution:
     def Serialize(self, root):
         # write code here
         # 如果是叶子节点的子节点（None节点），就返回一个特殊的字符，比如 '#'
-        if root == None:
+        if root is None:
             return "#"
         return str(root.val) + "," + self.Serialize(root.left) + "," + self.Serialize(root.right)
 
