@@ -1,10 +1,9 @@
-'''
+"""" 书 23
 一个链表中包含环，请找出该链表的环的入口结点。
-'''
+"""
 
 """
 https://blog.csdn.net/shansusu/article/details/50285735
-http://www.cnblogs.com/snake-hand/p/3148328.html
 http://bookshadow.com/weblog/2015/07/10/leetcode-linked-list-cycle-ii/
 """
 
@@ -15,25 +14,24 @@ class ListNode:
         self.next = None
 class Solution:
     def EntryNodeOfLoop(self, pHead):
-        if pHead == None or pHead.next == None or pHead.next.next == None:
+        if pHead is None or pHead.next is None:
             return None
-        nil = ListNode(-1)
-        nil.next= pHead
-        low = nil.next
-        fast = nil.next.next
-        while low != fast:
-            if fast.next == None or fast.next.next == None:
-                return None
-            # 慢指针每次走一步
-            low = low.next
-            # 快指针每次走两步
-            fast = fast.next.next
+        # 从 pHead 出发
+        p_fast, p_slow = pHead.next.next, pHead.next
+        while p_fast != p_slow:
+            # 判断是否有环
+            # if p_fast == None or fast.next == None:
+            #     return None
+            p_fast = p_fast.next.next
+            p_slow = p_slow.next
         # 如果题目问的是链表有没有坏，则在这里判断。如果快指针先走到了一个null值，则无环;如果快慢指针相遇了，则有环。
-        low = nil  # 当快慢指针相遇之后，将快指针放回至头结点
-        while low != fast:  # 快指针和慢指针每次各走一步
-            low = low.next
-            fast = fast.next
-        return low  # 最后相遇点就是环的入口点
+        p_meet = p_fast
+        # 也要从 pHead 出发
+        p_start = pHead
+        while p_meet != p_start:
+            p_meet = p_meet.next
+            p_start = p_start.next
+        return p_meet
 
 node1 = ListNode(1)
 node2 = ListNode(2)
