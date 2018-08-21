@@ -9,3 +9,13 @@ python2.2前的版本和python2.2以后3.0以前的版本的默认情况下，"/
 # 三元运算
 a = 1 if 2 < 1 else 2
 
+# 格式化输出
+# 1. % (不好，最好别用)
+year = 10
+fuck = '艹'
+print('我%d岁了，%s'% (year, fuck))
+# 2. .format(用它就完事了)
+year = 10
+fuck = '艹'
+print('我{}岁了，{}'.format(year, fuck))
+
