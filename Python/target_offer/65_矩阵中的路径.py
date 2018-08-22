@@ -29,7 +29,7 @@ class Solution:
             print("---" + direction)
         for i in range(rows):
             for j in range(cols):
-                print(matrix[cols*i+j], end=' ')
+                print(matrix[cols * i + j], end=' ')
 
     def hasPath(self, matrix, rows, cols, path):
         # write code here
@@ -58,14 +58,26 @@ class Solution:
         flag = flag1 or flag2 or flag3 or flag4
         return flag
 
-# 方法二：书上的思路
+
+# 方法二：书上的思路(用这个就完事了)
 class Solution:
+    # 主函数
     def hasPath(self, matrix, rows, cols, path):
-        if matrix == None or rows < 1 or cols < 1 or path == None:
+        """
+
+        :param matrix:二维数组
+        :param rows: int
+        :param cols: int
+        :param path: str
+        :return:
+        """
+        if matrix is None or rows < 1 or cols < 1 or path is None:
             return False
+        # 一维数组，是否用过
         visited = [0] * (rows * cols)
 
         pathLength = 0
+        # 遍历每个点，从每个点出发都要试
         for row in range(rows):
             for col in range(cols):
                 if self.hasPathCore(matrix, rows, cols, row, col, path, pathLength, visited):
@@ -77,8 +89,8 @@ class Solution:
             return True
 
         hasPath = False
-        if row >= 0 and row < rows and col >= 0 and col < cols and matrix[row * cols + col] == path[pathLength] and not \
-        visited[row * cols + col]:
+        if 0 <= row < rows and 0 <= col < cols and matrix[row * cols + col] == path[pathLength] and not \
+                visited[row * cols + col]:
 
             pathLength += 1
             visited[row * cols + col] = True
