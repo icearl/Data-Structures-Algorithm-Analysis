@@ -8,20 +8,23 @@
 
 """
 本题思路：
+先从简单的情况分析，找规律
 动态规划
 """
+
+
 def cut_rope(length):
     """
     剪绳子问题，采用动态规划
     """
     if length < 2:
-        return 0 #如果给的绳子小于2，没法剪，不符合题目要求，返回0
+        return 0  # 如果给的绳子小于2，没法剪，不符合题目要求，返回0
     if length == 2:
-        return 1 #如果长度是2，还必须至少剪一刀，只能是1*1 =1
+        return 1  # 如果长度是2，还必须至少剪一刀，只能是1*1 =1
     if length == 3:
-        return 2 #如果长度为3，只能是2*1 = 2 > 1*1*1 =1
+        return 2  # 如果长度为3，只能是2*1 = 2 > 1*1*1 =1
     products = [None] * 50
-    #products列表，放的是绳子长度最优的情况
+    # products列表，放的是绳子长度最优的情况
     products[0] = 0
     products[1] = 1
     products[2] = 2
@@ -32,11 +35,11 @@ def cut_rope(length):
     为什么要定义products[1] = 1和products[2] = 2？
     因为：不可能绳子程度都是三的倍数，一定会需要1和2来保证相加起来等于绳子的长度。
     """
-    for i in range(4,length+1): #从长度为4的绳子开始
-        #求出从4到给出的绳子，每一个长度的最大乘积
+    for i in range(4, length + 1):  # 从长度为4的绳子开始
+        # 求出从4到给出的绳子，每一个长度的最大乘积
         max = 0
-        for j in range(1,i//2+1): #从1到i//2+1师因为4*6和6*4一样，当到了中间相同的数字，乘积结束后就可以
-            product = products[i] *products[i-j]
+        for j in range(1, i // 2 + 1):  # 从1到i//2+1师因为4*6和6*4一样，当到了中间相同的数字，乘积结束后就可以
+            product = products[i] * products[i - j]
             if max < product:
                 max = product
             product[i] = max
