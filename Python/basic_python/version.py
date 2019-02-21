@@ -17,6 +17,11 @@ python 的 2 和 3 版本不同
 2. 配置环境变量，在环境变量路径里改变需要的名字
     比如要用 python 调用 python3，那就复制一个 python3 改为 python
 3. 可以用 python / python2 / python3 进入交互模式检查是哪个版本的 python
-    可以用 which python 来检查 python 在什么路径 
+    可以用 which python 来检查 python 在什么路径
+    
+我的情况：
+简单点：
+用 python2 和 pip2 调用 2 版本
+用 python3 和 pip3 调用 3 版本 
 """
 
